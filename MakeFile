@@ -1,0 +1,21 @@
+TARGET = kernel
+CC = gcc
+AS = nasm
+LD = ld
+CFLAGS = -m32 -ffreestanding -O2 -nostdlib
+LDFLAGS = -T link.ld -melf_i386
+
+all: $(TARGET).bin
+
+$(TARGET).bin: boot.o kernel.o
+	$(LD) $(LDFLAGS) -o $(TARGET).bin boot.o kernel.o
+
+boot.o: boot.s
+	$(AS) -f elf32 boot.s -o boot.o
+
+kernel.o: kernel.c
+	$(CC) $(CFLAGS) -c kernel.c -o kernel.o
+
+clean:
+	rm -f *.o *.bin
+
