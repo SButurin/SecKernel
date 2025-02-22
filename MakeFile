@@ -1,7 +1,7 @@
 TARGET = kernel
-CC = gcc
+CC = x86_64-elf-gcc
 AS = nasm
-LD = ld
+LD = /opt/homebrew/bin/x86_64-elf-ld
 CFLAGS = -m32 -ffreestanding -O2 -nostdlib
 LDFLAGS = -T link.ld -melf_i386
 

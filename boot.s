@@ -4,9 +4,9 @@ section .text
 _start:
     cli                 ; Desactiva interrupciones
     mov esp, stack_top  ; Configura la pila
-    extern kernel_main  ; Declara que `kernel_main` está en otro archivo (C)
-    call kernel_main    ; Llama a la función `kernel_main`
-    hlt                 ; Detiene la CPU en caso de que el kernel termine
+    extern kernel_main  ; Declara que `kernel_main` está en C
+    call kernel_main    ; Llama a `kernel_main`
+    hlt                 ; Detiene la CPU
 
 section .bss
 align 16
